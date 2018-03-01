@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<div class="modal fade" id="makepost" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+		 <div class="modal-body"  style="max-height:880px;overflow-x:hidden;overflow:auto;">
+			<!-- form: -->
+			<div class="col-lg-10 col-lg-offset-1">
+					<div class="page-header">
+						<h2>Make Post</h2>
+					</div>
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#eventblock" data-toggle="tab"><h4>Event</h4></a>
+					</li>
+					<li><a href="#textblock" data-toggle="tab"><h4>Text</h4></a></li>
+					<li><a href="#pictureblock" data-toggle="tab"><h4>Picture</h4></a></li>
+					<li><a href="#videoblock" data-toggle="tab"><h4>Video</h4></a></li>
+
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade in active" id="eventblock">
+						<div class="page-header">
+							<h3>Create Event</h3>
+						</div>
+						<form id="eventform" data-toggle="validator" method="post">
+							<div class="form-group">
+								<label class="control-label">Title</label>
+								<input name="title" type="text" class="form-control"  placeholder="Title" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Schedule</label>
+								<input name="schedule" type="date" class="form-control" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Details</label>
+								<textarea name="details" type="text" class="form-control" placeholder="Event details" rows="4" required></textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Link</label>
+								<input name="link" type="text" class="form-control" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Photo</label>
+								<input id="input-600" name="inputFile" type="file" accept="image/*" multiple class="file-loading">
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="textblock">
+						<div class="page-header">
+							<h3>Post Text</h3>
+						</div>
+						<form id="textform" data-toggle="validator" action="/posttext" method="post">
+							<div class="form-group">
+								<label class="control-label">Title</label>
+								<input name="title" type="text" placeholder="Title" class="form-control" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Details</label>
+								<textarea name="details" type="text" class="form-control" placeholder="Text Message" rows="4" required></textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Post Text</button>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="pictureblock">
+						<div class="page-header">
+							<h3>Post Picture</h3>
+						</div>
+						<form id="photosform"  enctype="multipart/form-data" method="post" accept-charset="utf-8">
+							<div class="form-group">
+								<label class="control-label">Title</label>
+								<input name="title" type="text" placeholder="Title" class="form-control" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Details</label>
+								<textarea name="details" type="text" class="form-control" placeholder="Text Message" rows="4" required></textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+													
+							<div class="form-group">
+								<label class="control-label">Photo</label>
+								<input id="input-700" name="inputFile" type="file" accept="image/*" multiple class="file-loading">
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="videoblock">
+						<div class="page-header">
+							<h3>Post Video</h3>
+						</div>
+						<form id="videoform"  enctype="multipart/form-data" method="post" accept-charset="utf-8">
+							<div class="form-group">
+								<label class="control-label">Title</label>
+								<input name="title" type="text" placeholder="Title" class="form-control" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Details</label>
+								<textarea name="details" type="text" class="form-control" placeholder="Text Message" rows="4" required></textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+													
+							<div class="form-group">
+								<label class="control-label">Video</label>
+								<input id="input-800" name="inputFile" type="file" accept="video/*" multiple class="file-loading">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- form -->
+		 </div>
+	  </div>
+	</div>
+</div>
+
+<script>
+$("#input-600").fileinput({
+		uploadUrl: "/postevent", // server upload action
+		autoReplace: true,
+		uploadAsync: true,
+		maxFileCount: 1,
+		previewFileType: "image",
+		showCaption: true,
+		showRemove: true,
+		showUpload: true,
+		
+		browseClass: "btn btn-success",
+		browseLabel: "Pick Image",
+		browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+		removeClass: "btn btn-danger",
+		removeLabel: "Clear",
+		removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+		uploadClass: "btn btn-info",
+		uploadLabel: "Upload",
+		uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i>",
+		layoutTemplates: {actionUpload: ''},
+		uploadExtraData: function(){
+			var data = {
+				title: $("#eventform [name='title']").val(),
+				schedule: $("#eventform [name='schedule']").val(),
+				details: $("#eventform [name='details']").val(),
+				link: $("#eventform [name='link']").val()
+			};
+			return data;
+		}
+	})
+	.on('fileselect', function(event, numFiles, label) {
+		
+	})
+	.on('fileuploaded', function(event, data, previewId, index) {
+		$('#input-700').fileinput('disable');
+		alert("Post has been made successfully!");
+		location.reload();
+	})
+	.on('filepredeleted', function(event, key) {
+		console.log('Key = ' + key);
+	});
+	
+$("#input-700").fileinput({
+		uploadUrl: "/postphotos", // server upload action
+		autoReplace: true,
+		uploadAsync: true,
+		maxFileCount: 1,
+		previewFileType: "image",
+		showCaption: true,
+		showRemove: true,
+		showUpload: true,
+		
+		browseClass: "btn btn-success",
+		browseLabel: "Pick Image",
+		browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+		removeClass: "btn btn-danger",
+		removeLabel: "Clear",
+		removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+		uploadClass: "btn btn-info",
+		uploadLabel: "Upload",
+		uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i>",
+		layoutTemplates: {actionUpload: ''},
+		uploadExtraData: function(){
+			var data = {
+				title: $("#photosform [name='title']").val(),
+				details: $("#photosform [name='details']").val()
+			};
+			return data;
+		}
+	})
+	.on('fileselect', function(event, numFiles, label) {
+		
+	})
+	.on('fileuploaded', function(event, data, previewId, index) {
+		$('#input-700').fileinput('disable');
+		alert("Post has been made successfully!");
+		location.reload();
+	})
+	.on('filepredeleted', function(event, key) {
+		console.log('Key = ' + key);
+	});
+	
+$("#input-800").fileinput({
+	uploadUrl: "/postvideo", // server upload action
+	autoReplace: true,
+	uploadAsync: true,
+	maxFileCount: 1,
+	previewFileType: "image",
+	showCaption: true,
+	showRemove: true,
+	showUpload: true,
+	
+	browseClass: "btn btn-success",
+	browseLabel: "Pick Image",
+	browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+	removeClass: "btn btn-danger",
+	removeLabel: "Clear",
+	removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+	uploadClass: "btn btn-info",
+	uploadLabel: "Upload",
+	uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i>",
+	layoutTemplates: {actionUpload: ''},
+	uploadExtraData: function(){
+		var data = {
+			title: $("#videoform [name='title']").val(),
+			details: $("#videoform [name='details']").val()
+		};
+		return data;
+	}
+})
+.on('fileselect', function(event, numFiles, label) {
+	
+})
+.on('fileuploaded', function(event, data, previewId, index) {
+	$('#input-700').fileinput('disable');
+	alert("Post has been made successfully!");
+	location.reload();
+})
+.on('filepredeleted', function(event, key) {
+	console.log('Key = ' + key);
+});
+
+$('#textform').validator().on('submit', function (e) {
+  if (e.isDefaultPrevented()) {
+	// handle the invalid form...
+  } else {
+	// everything looks good!
+	$.post("/posttext", $(this).serializeArray(), function(data){
+		console.log(data);
+		if(data == 'success'){
+			alert("Post has been made successfully!");	
+			location.reload();
+		}
+		else
+			alert(data.message);
+	});
+	return false;
+  }
+})
+</script>

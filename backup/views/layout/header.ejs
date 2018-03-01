@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<div class="header_bg">
+<div class="container">
+	<div class="header">
+		<div class="logo">
+			<a href="/"><img src="images/logo.png" alt=""/></a>
+		</div>
+		<div class="h_menu">
+		<a id="touch-menu" class="mobile-menu" href="#">Menu</a>
+		<nav>
+		<ul class="menu list-unstyled">
+			<% if(! user) {%>
+				<li><a href="/signin">SIGN IN</a></li>
+				<li><a href="/signup">SIGN UP</a></li>	
+			<% } else { %>
+				<li><a href="/"><%= user.details.name.first + " " + user.details.name.last  %></a>
+				<ul class="sub-menu list-unstyled">
+					<li><a href="#">Profile</a>
+						<ul class="list-unstyled">
+							<li><a href="/viewprofile">View Profile</a></li>
+							<li><a href="/updateprofile">Update Profile</a></li>
+							<li><a href="/updatepassword">Update Password</a></li>
+						</ul>
+					</li>
+					<li><a href="portfolio.html">Post</a>
+						<ul class="list-unstyled">
+							<li><a href="/listpost">View Post</a></li>
+							<li><a href="/post">Make Post</a></li>
+						</ul>
+					</li>
+				</ul>
+				</li>
+				<li><a href="/signout">SIGN Out</a></li>
+			<% } %>
+				<!--
+				<li>
+					<div id="imaginary_container"> 
+						<div class="input-group stylish-input-group">
+							<input type="text" class="form-control"  placeholder="Search" >
+							<span class="input-group-addon">
+								<button type="submit">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>  
+							</span>
+						</div>
+					</div>
+				</li>
+				-->
+		</ul>
+		</nav>
+		<script src="js/menu.js" type="text/javascript"></script>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+
+<style>
+#imaginary_container{
+	width: 200px;
+    margin-top:15px; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+</style>
+<% include signin %>
+<% include signup %>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include layout/head %>
+</head>
+<body>
+	<div class="header-banner" id="head"></div>
+	<!-- Slider -->
+	<div id="home" class="vc-banner">
+		<div class="container">
+			<div class="banner-grids">
+				<div class="col-md-4 navigation">
+					<div class="nav-left">
+						<div>
+							<a href="#"><span><%= vc.details.name.first + " " + vc.details.name.last %></span></a>
+						</div>
+					</div>
+					<div class="nav-right">
+						<div class="about-grid">
+							<p><%= vc.details.introduction %></p>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-8 banner-image text-center">
+					<img src="<%= vc.details.photo %>" alt=""/>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+<style>
+/*-- banner --*/
+.navigation{
+	margin-top:20%;
+}
+.vc-banner{
+background:#ced7df;
+}
+/*-- menu --*/
+.nav-right span{
+	display:none;
+	}
+/*-- //menu --*/
+.banner-grids{
+margin-top:50px;
+}
+
+.nav-left a {
+  font-size: 5em;
+  font-weight: 600;
+  color: #23232b;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Jockey One', sans-serif;
+}
+
+.about-grid p {
+    font-family: 'Jockey One', sans-serif;
+    text-align: left;
+    font-size: 24px;
+	color: #888888;
+}
+</style>
+	<% include layout/header %>
+	<div class="content">
+	
+<style>
+.aboutus{
+	background: #f2f0ec;
+}
+.main_grid{
+	//padding: 4% 0;
+}
+.top_grid{
+	background: #ececec;
+	padding: 4%;
+}
+.span1_of_1 {
+	padding: 0;
+}
+.span1_of_1 h3{
+	text-transform: capitalize;
+	margin:0;
+	font-size: 28px;
+	color: #8C9899;
+}
+.span1_of_1 p{
+	font-size: 14px;
+	color: #888888;
+	line-height: 1.8em;
+}
+.span1_of_2{
+	position: relative;
+}
+/* General button style (reset) */
+/*
+.btn {
+	font-size:14px;
+	color:#ffffff;
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding: 14px 48px;
+	display: inline-block;
+	text-transform: uppercase;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+*/
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+/* Button 2 */
+.btn-2 {
+	background: #E8645A;
+	color: #fff;
+	box-shadow: 0 6px #ab3c3c;
+	-webkit-box-shadow: 0 6px #ab3c3c;
+	-moz-box-shadow: 0 6px #ab3c3c;
+	-o-box-shadow: 0 6px #ab3c3c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+/* span_of_4 */
+.span_of_4 {
+	text-align: center;
+	margin: 4% 0;
+	position: relative;
+}
+.span1_of_4{
+	padding: 0;
+	margin-left: 20px;
+	width: 23.577777%;
+}
+.span1_of_4:first-child{
+	margin-left: 0;
+}
+.span4_of_list{
+	cursor:pointer;
+	background: #ffffff;
+	padding: 20px 20px 50px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;	
+	-moz-border-radius: 4px;	
+	-o-border-radius: 4px;	
+	box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-webkit-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-moz-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-o-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+}
+.span4_of_list:hover.span4_of_list span i{
+	color: #E8645A;	
+	background: none;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;	
+}
+.span4_of_list .btn{
+	box-shadow: 0 4px #47817E;
+	-webkit-box-shadow: 0 4px #47817E;
+	-moz-box-shadow: 0 4px #47817E;
+	-o-box-shadow: 0 4px #47817E;
+}
+.span4_of_list:hover .btn{
+	color:#ffffff;
+	background: #E8645A;
+	box-shadow: 0 4px #ab3c3c;
+	-webkit-box-shadow: 0 4px #ab3c3c;
+	-moz-box-shadow: 0 4px #ab3c3c;
+	-o-box-shadow: 0 4px #ab3c3c;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;	
+}
+.span4_of_list span.active i{
+	color: #E8645A;	
+}
+.span4_of_list span i{
+	font-size:5em;
+	color: #76C7C0;
+	background: none;
+	box-shadow:none;
+	margin-top: 15px;
+}
+.span4_of_list h3{
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #8C9899;
+	margin: 10px 0 10px;
+}
+.span4_of_list p{
+	font-size: 14px;
+	color: #888888;
+	line-height: 1.5em;
+}
+.read_more{
+	position: absolute;
+	left: 19%;
+	bottom: -16px;
+}
+</style>
+<!----font-Awesome----->
+<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+<!----font-Awesome----->
+<div class="aboutus">
+	<div class="container">
+		<div class="main_grid">
+			<div class="span_of_4"><!-- start span_of_4 -->
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-thumbs-o-up"></i></span>
+						<h3><%= vc.details.brief[0].title %></h3>
+						<p><%= vc.details.brief[0].details %></p>
+					</div>
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-users"></i></span>
+						<h3><%= vc.details.brief[1].title %></h3>
+						<p><%= vc.details.brief[1].details %></p>	
+					</div>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-flag"></i></span>
+						<h3><%= vc.details.brief[2].title %></h3>
+						<p><%= vc.details.brief[2].details %></p>		
+					</div>
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-bell-o"></i></span>
+						<h3><%= vc.details.brief[3].title %></h3>
+						<p><%= vc.details.brief[3].details %></p>						
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div><!-- end span_of_4 -->
+		</div>
+	</div>
+</div>
+<style>
+.blog .title{
+    font-family: 'Jockey One', sans-serif;
+    margin: 0;
+    color: #323b43;
+    font-size: 44px;
+    text-align: center;
+    font-weight: 400;
+}
+/* start blog */
+.blog{
+	//padding:4% 0%;
+}
+.blog_date{
+	text-align: center;
+}
+.blog_list{
+	margin-top: 4%;
+}
+.blog_date span.date{
+	background: #F5F5F5;
+	padding: 15px 10px;
+	display: block;
+	color: #808B8D;
+	font-size: 20px;
+	text-transform: uppercase;
+	box-shadow: inset 0px -2px 0px #DFDFDF;
+	-webkit-box-shadow: inset 0px -2px 0px #DFDFDF;
+	-moz-box-shadow: inset 0px -2px 0px #DFDFDF;
+	-o-box-shadow: inset 0px -2px 0px #DFDFDF;
+	border-radius: 4px;	
+	-webkit-border-radius: 4px;	
+	-moz-border-radius: 4px;	
+	-o-border-radius: 4px;	
+}
+.blog_date span.icon_date{
+	margin-top:20px;
+	background: #808B8D;
+	padding: 20px 10px;
+	display: block;
+	color: #FFFFFF;
+	font-size: 30px;
+	border-radius: 4px;	
+	-webkit-border-radius: 4px;	
+	-moz-border-radius: 4px;	
+	-o-border-radius: 4px;	
+}
+.blog_left span{
+	font-size: 14px;
+	color: #808B8D;
+	display: block;
+	text-transform:capitalize;
+}
+.blog_left span a{
+	color: #DC5925;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.blog_left span a:hover{
+	color: #81BFBE;
+	text-decoration:none;
+}
+.blog_left span a i{
+	color: #81BFBE;
+	margin-right: 5px;
+}
+.blog_left span a.left{
+	margin-left: 20px;
+}
+.blog_left p{
+	margin: 20px 0;
+}
+.blog_left img{
+	width:100%;
+}
+.blog_left h4 a{
+	display: block;
+	margin: 4% 0 2%;
+	font-size: 20px;
+	color: #808B8D;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.blog_left h4 a:hover{
+	text-decoration: none;
+	color: #E55846;
+}
+.blog_right h4{
+	margin: 0 0 4%;
+	color: #808B8D;
+	text-transform: capitalize;
+	font-size: 20px;
+}
+/* start tag_nav */
+.tag_nav {
+	margin: 8% 0;
+}
+.tag_nav li{
+	margin:10px 5px 0 0;
+	display: inline-block;
+}
+.tag_nav li a{
+	display: block;
+	text-transform: capitalize;
+	background: #808B8D;
+	color: #FFFFFF;
+	font-size: 13px;
+	padding: 8px 14px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.tag_nav li.active a,.tag_nav li a:hover{
+	background: #70C570;
+	color: #ffffff;
+	text-decoration:none;
+}
+.blog_title{
+	padding-top:2%;
+}
+.blog_title h4{
+    text-transform: uppercase;
+    color: #62A09D;
+    font-size: 24px;
+    margin: 5px 0 0;
+}
+.h-divider{
+ margin-top:5px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid gray;
+}
+.btn{
+	margin-bottom: 20px;
+}
+</style>
+
+		<div class="main1_bg"><!-- start main1 -->
+		<div class="container">
+			<div class="main blog_title text-center">
+				<h4><%= vc.details.name.first + " " + vc.details.name.last %>'s Post</h4>
+				<div class="clearfix"></div>
+			</div>
+			<div class="blog"><!-- start blog -->
+				<div class="blog_main">
+					<% for(var i=0; i<posts.length; i++) {%>
+						<% var date = new Date(posts[i].date); 
+							var month = new Array();
+							month[0] = "January";
+							month[1] = "February";
+							month[2] = "March";
+							month[3] = "April";
+							month[4] = "May";
+							month[5] = "June";
+							month[6] = "July";
+							month[7] = "August";
+							month[8] = "September";
+							month[9] = "October";
+							month[10] = "November";
+							month[11] = "December";
+							var y = date.getFullYear();
+							var m = month[date.getMonth()]; 
+							var d = date.getDay();%>
+						
+						<% if(posts[i].type == 1){ %>
+							<div class="blog_list">
+								<div class="col-md-2 blog_date">
+									<span class="date"><%= m %> <p><%= d %><p></p></span>
+									<span class="icon_date"><i class="fa"><span class="glyphicon glyphicon-align-left"></span></i></span>
+								</div>
+								<div class="col-md-10 blog_left">
+									<h4><a href="#"><%= posts[i].details.title %></a></h4>
+									<span>posted by <a href="#"><%= posts[i].madeby.details.name.first + " " + posts[i].madeby.details.name.last %></a> <a class="left" href="#"><i class="fa fa-comment"></i><%= posts[i].comments.length %> Comments</a> <a class="left" href="#"><i class="fa fa-eye"></i>0 views</a> <a class="left" href="#"><i class="fa"><span class="glyphicon glyphicon-heart"></span></i><%= posts[i].likes.length %> like</a></span>
+									<p class="para"><%= posts[i].details.details %> </p>
+									<div class="h-divider "></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						<% }else if(posts[i].type == 2){ %>
+							<div class="blog_list">
+								<div class="col-md-2 blog_date">
+									<span class="date"><%= m %> <p><%= d %><p></p></span>
+									<span class="icon_date"><i class="fa"><span class="glyphicon glyphicon-camera"></span></i></span>
+								</div>
+								<div class="col-md-10 blog_left">
+									<a href="#"><img src="<%= posts[i].details.url %>" alt="" class="img-responsive"/></a>
+									<h4><a href="#"><%= posts[i].details.title %></a></h4>
+									<span>posted by <a href="#"><%= posts[i].madeby.details.name.first + " " + posts[i].madeby.details.name.last %></a> <a class="left" href="#"><i class="fa fa-comment"></i><%= posts[i].comments.length %> Comments</a> <a class="left" href="#"><i class="fa fa-eye"></i>0 views</a> <a class="left" href="#"><i class="fa"><span class="glyphicon glyphicon-heart"></span></i><%= posts[i].likes.length %> like</a></span>
+									<p class="para"><%= posts[i].details.text %> </p>
+									<div class="h-divider "></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						<% }else if(posts[i].type == 3){ %>
+							<div class="blog_list">
+								<div class="col-md-2 blog_date">
+									<span class="date"><%= m %> <p><%= d %><p></p></span>
+									<span class="icon_date"><i class="fa"><span class="glyphicon glyphicon-film"></span></i></span>
+								</div>
+								<div class="col-md-10 blog_left">
+									<video width="100%" controls>
+									  <source src="<%= posts[i].details.url %>" type="video/mp4">
+									</video>
+									<h4><a href="#"><%= posts[i].details.title %></a></h4>
+									<span>posted by <a href="#"><%= posts[i].madeby.details.name.first + " " + posts[i].madeby.details.name.last %></a> <a class="left" href="#"><i class="fa fa-comment"></i><%= posts[i].comments.length %> Comments</a> <a class="left" href="#"><i class="fa fa-eye"></i>0 views</a> <a class="left" href="#"><i class="fa"><span class="glyphicon glyphicon-heart"></span></i><%= posts[i].likes.length %> like</a></span>
+									<p class="para"><%= posts[i].details.text %> </p>
+									<div class="h-divider "></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						<% }else if(posts[i].type == 4){ %>
+							<div class="blog_list">
+								<div class="col-md-2 blog_date">
+									<span class="date"><%= m %> <p><%= d %><p></p></span>
+									<span class="icon_date"><i class="fa">Event</i></span>
+								</div>
+								<div class="col-md-10 blog_left">
+									<a href="#"><img src="<%= posts[i].details.url %>" alt="" class="img-responsive"/></a>
+									<h4><a href="single-page.html"><%= posts[i].details.title %> - <%= posts[i].details.schedule %></a></h4>
+									<span>posted by <a href="#"><%= posts[i].madeby.details.name.first + " " + posts[i].madeby.details.name.last %></a> 
+									<a class="left" href="#"><i class="fa fa-comment"></i><%= posts[i].comments.length %> Comments</a> 
+									<a class="left" href="#"><i class="fa fa-eye"></i>0 views</a> 
+									<a class="left" href="#"><i class="fa"><span class="glyphicon glyphicon-heart"></span></i><%= posts[i].likes.length %> like</a>
+									<a class="left" href="#"><i class="fa"><span class="glyphicon glyphicon-heart"></span></i><%= posts[i].details.participator.length %> Join</a>
+									</span>
+									<p class="para"><%= posts[i].details.details %> </p>
+									<div class="read_btn">
+										<a href="<%= posts[i].details.link %>"><button class="btn">view more</button></a>
+									</div>
+									<div class="h-divider "></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						<% } %>
+					<% } %>
+					<div class="clearfix"></div>
+				</div>
+<!-- 				<div class="col-md-3 blog_right">
+					<ul class="tag_nav list-unstyled">
+						<h4>tags</h4>
+							<li><a href="#">all</a></li>
+							<li><a href="#">Text</a></li>
+							<li><a href="#">Photo</a></li>
+							<li><a href="#">video</a></li>
+							<li><a href="#">event</a></li>
+							<div class="clearfix"></div>
+					</ul>
+				</div> -->
+				<div class="clearfix"></div>
+			</div><!-- end blog -->
+		</div>
+		</div>
+	</div>
+	<% include layout/footer %>
+</body>
+</html>

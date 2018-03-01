@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var filterList = {
+
+			init : function() {
+
+				// MixItUp plugin
+				// http://mixitup.io
+				$('#portfoliolist').mixitup({
+					targetSelector : '.portfolio',
+					filterSelector : '.filter',
+					effects : ['fade'],
+					easing : 'snap',
+					// call the hover effect
+					onMixEnd : filterList.hoverEffect()
+				});
+
+			},
+
+			hoverEffect : function() {
+
+				// Simple parallax effect
+				$('#portfoliolist .portfolio').hover(function() {
+					$(this).find('.label').stop().animate({
+						bottom : 0
+					}, 200, 'easeOutQuad');
+					$(this).find('img').stop().animate({
+						top : -30
+					}, 500, 'easeOutQuad');
+				}, function() {
+					$(this).find('.label').stop().animate({
+						bottom : -40
+					}, 200, 'easeInQuad');
+					$(this).find('img').stop().animate({
+						top : 0
+					}, 300, 'easeOutQuad');
+				});
+
+			}
+		};
+
+		// Run the show!
+		filterList.init();
+	});
+</script>
+
+<!-- Pop Up -->
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
+<script type="text/javascript" src="js/jquery.fancybox-1.2.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("div.fancyDemo a").fancybox();
+	});
+</script>
+<!-- End of Pop Up -->
+<style>
+/*---start portfolio --*/
+.mostpopular{
+	padding: 4em 0;
+    background: #1f2a36;
+}
+.portfolio_main{
+	padding:2% 0 4%;
+}
+#portfoliolist .portfolio {
+	width: 48%;
+}
+#info {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	border-radius:5px;				
+	background:#fcf8e3;
+	border:1px solid  #fbeed5;
+	width:95%;
+	max-width:900px;
+	margin:0 auto 40px auto;
+	font-size:12px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+#info .info-wrapper {
+	padding:10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+#info a {
+	color:#c09853;
+	text-decoration:none;
+}
+	
+#info p {
+	margin:5px 0 0 0;
+}
+.container { 
+	position: relative; 
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;	
+}
+#filters {
+	margin:4% 1%;
+	padding:0;
+	list-style:none;
+}
+#filters li {
+	display:inline-block;
+	margin-right: 20px;
+}
+#filters li span {
+	font-size:13px;
+	display: block;
+	padding: 10px 30px;
+	border: 1px solid rgb(221, 221, 221);
+	text-decoration: none;
+	color: #47817E;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;	
+	-moz-border-radius: 4px;	
+	-o-border-radius: 4px;	
+}
+#filters li span.active,#filters li span:hover {
+	background: #EA6060;
+	border: 1px solid #CF5050;
+	color:#fff;
+}
+#portfoliolist .portfolio {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	width:25%;
+	//margin:1%;
+	display:none;
+	float:left;
+	overflow:hidden;
+}
+.portfolio-wrapper {
+	overflow:hidden;
+	position: relative !important;
+	cursor:pointer;
+}
+.portfolio img {
+	top: 0px !important;
+	max-width:100%;
+	position: relative;
+	opacity: 5;
+	transition: all 300ms!important;
+	-webkit-transition: all 300ms!important;
+	-moz-transition: all 300ms!important;
+}
+.portfolio .label {
+	position: absolute;
+	width: 100%;
+	height:40px;
+	bottom:-40px;
+}
+.portfolio .label-bg {
+	background: #62A29E;
+	width: 100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.portfolio .label-text {
+	color:#fff;
+	position: relative;
+	z-index:500;
+	padding:5px 8px;
+}
+.portfolio .text-category {
+	display: block;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-weight: 100;
+	margin-top: 5px;
+}
+</style>
+<div class="mostpopular" id="mostpopular">
+	<div class="container">
+		<div class="portfolio_main">
+			<div id="portfoliolist">
+				<% for(var i=0; i<vcs.length; i++) {%>
+				<div class="portfolio logo1" <% if(i==0) {%> style="width:50%;<% } %>">
+					<div class="portfolio-wrapper">
+						<div class="fancyDemo">
+							<a rel="group" title="" href="images/pop1.png"><img src="images/pop1.png" alt=""class="img-responsive"/></a>
+						</div>
+						<div class="label">
+							<div class="label-text">
+								<a href="/vc?id=<%= vcs[i]._id %>"><span class="text-category"><%= vcs[i].details.name.first + " " + vcs[i].details.name.last %></span></a>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+						<!-- <li><a href="/vc?id=<%= vcs[i]._id %>"><img class="square-img img-thumbnail" src="<%= vcs[i].details.photo %>"><%= vcs[i].details.name.first + " " + vcs[i].details.name.last %></a></li> -->
+				<% } %>
+				
+				<div class="portfolio app" data-cat="app">
+					<div class="portfolio-wrapper">
+						<div class="fancyDemo">
+							<a rel="group" title="" href="images/s2.jpg"><img src="images/s2.jpg" alt=""class="img-responsive"/></a>
+						</div>
+						<div class="label">
+							<div class="label-text">
+								<span class="text-category">User2</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+				<div class="portfolio web" data-cat="web">
+					<div class="portfolio-wrapper">
+						<div class="fancyDemo">
+							<a rel="group" title="" href="images/s3.jpg"><img src="images/s3.jpg" alt=""class="img-responsive"/></a>
+						</div>
+						<div class="label">
+							<div class="label-text">
+								<span class="text-category">User3</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+				<div class="portfolio card" data-cat="card">
+					<div class="portfolio-wrapper">
+						<div class="fancyDemo">
+							<a rel="group" title="" href="images/s4.jpg"><img src="images/s4.jpg" alt=""class="img-responsive"/></a>
+						</div>
+						<div class="label">
+							<div class="label-text">
+								<span class="text-category">User4</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+				<div class="portfolio app" data-cat="app">
+					<div class="portfolio-wrapper">
+						<div class="fancyDemo">
+							<a rel="group" title="" href="images/s5.jpg"><img src="images/s5.jpg" alt=""class="img-responsive"/></a>
+						</div>
+						<div class="label">
+							<div class="label-text">
+								<span class="text-category">User5</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>

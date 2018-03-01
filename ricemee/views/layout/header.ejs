@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- script for menu -->
+<!--script-nav-->
+ <script>
+$("span.menu").click(function(){
+	$(".top-menu ul").slideToggle("slow" , function(){});
+});
+ </script>
+<!-- //script for menu -->
+<!-- script-for sticky-nav -->
+<script>
+$(document).ready(function() {
+	 var navoffeset=$(".header-bottom").offset().top;
+	 $(window).scroll(function(){
+		var scrollpos=$(window).scrollTop(); 
+		if(scrollpos >=navoffeset){
+			$(".header-bottom").addClass("fixed");
+		}else{
+			$(".header-bottom").removeClass("fixed");
+		}
+	 });
+	 
+});
+</script>
+<!-- //script-for sticky-nav -->
+<div class="header-bottom">
+	<div class="fixed-header">
+		<div class="container">
+			<div class="top-menu">
+				<span class="menu"><img src="images/nav.png" alt=""/> </span>
+				<ul>
+					<nav class="cl-effect-5">
+						<li><a href="/"><span data-hover="首页">首页</span></a></li>
+						<li><a class="scroll" href="#aboutus"><span data-hover="关于我们">关于我们</span></a></li>
+						<li><a class="scroll" href="#mostpopular"><span data-hover="牛咖">牛咖</span></a></li>
+						<li><a class="scroll" href="#location"><span data-hover="联系我们">联系我们</span></a></li>
+						<% if(! user) {%>
+							<li><a class="scroll" data-toggle="modal" data-target="#signin"><span data-hover="登录">登录</span></a></li>
+							<li><a class="scroll" data-toggle="modal" data-target="#signup"><span data-hover="注册">注册</span></a></li>		
+						<% } else { %>
+							<% if( user.authority == 3) {%>
+							<li><a class="scroll" data-toggle="modal" data-target="#makepost">
+								<span data-hover="发布"><%= user.details.name.first + " " + user.details.name.last  %></span>
+							</a></li>
+							<% } else { %>
+							<li><a>
+								<span data-hover="<%= user.details.name.first + " " + user.details.name.last  %>"><%= user.details.name.first + " " + user.details.name.last  %></span>
+							</a></li>
+							<% } %>
+							
+							<li><a href="/signout"><span data-hover="注销">注销</span></a></li>
+							
+						<% } %>
+					</nav>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<% include signin %>
+<% include signup %>
+<% include makepost %>

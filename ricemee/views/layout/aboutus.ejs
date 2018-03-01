@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<style>
+.aboutus{
+	background: #f2f0ec;
+}
+.main_grid{
+	padding: 4% 0;
+}
+.top_grid{
+	background: #ececec;
+	padding: 4%;
+}
+.span1_of_1 {
+	padding: 0;
+}
+.span1_of_1 h3{
+	text-transform: capitalize;
+	margin:0;
+	font-size: 28px;
+	color: #8C9899;
+}
+.span1_of_1 p{
+	font-size: 14px;
+	color: #888888;
+	line-height: 1.8em;
+}
+.span1_of_2{
+	position: relative;
+}
+/* General button style (reset) */
+/*
+.btn {
+	font-size:14px;
+	color:#ffffff;
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding: 14px 48px;
+	display: inline-block;
+	text-transform: uppercase;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+*/
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+/* Button 2 */
+.btn-2 {
+	background: #E8645A;
+	color: #fff;
+	box-shadow: 0 6px #ab3c3c;
+	-webkit-box-shadow: 0 6px #ab3c3c;
+	-moz-box-shadow: 0 6px #ab3c3c;
+	-o-box-shadow: 0 6px #ab3c3c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+/* span_of_4 */
+.span_of_4 {
+	text-align: center;
+	margin: 4% 0;
+	position: relative;
+}
+.span1_of_4{
+	padding: 0;
+	margin-left: 20px;
+	width: 23.577777%;
+}
+.span1_of_4:first-child{
+	margin-left: 0;
+}
+.span4_of_list{
+	cursor:pointer;
+	background: #ffffff;
+	padding: 20px 20px 50px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;	
+	-moz-border-radius: 4px;	
+	-o-border-radius: 4px;	
+	box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-webkit-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-moz-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+	-o-box-shadow: inset 0px -1px 1px rgb(216, 216, 216);
+}
+.span4_of_list:hover.span4_of_list span i{
+	color: #E8645A;	
+	background: none;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;	
+}
+.span4_of_list .btn{
+	box-shadow: 0 4px #47817E;
+	-webkit-box-shadow: 0 4px #47817E;
+	-moz-box-shadow: 0 4px #47817E;
+	-o-box-shadow: 0 4px #47817E;
+}
+.span4_of_list:hover .btn{
+	color:#ffffff;
+	background: #E8645A;
+	box-shadow: 0 4px #ab3c3c;
+	-webkit-box-shadow: 0 4px #ab3c3c;
+	-moz-box-shadow: 0 4px #ab3c3c;
+	-o-box-shadow: 0 4px #ab3c3c;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;	
+}
+.span4_of_list span.active i{
+	color: #E8645A;	
+}
+.span4_of_list span i{
+	font-size:5em;
+	color: #76C7C0;
+	background: none;
+	box-shadow:none;
+	margin-top: 15px;
+}
+.span4_of_list h3{
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #8C9899;
+	margin: 10px 0 10px;
+}
+.span4_of_list p{
+	font-size: 14px;
+	color: #888888;
+	line-height: 1.5em;
+}
+.read_more{
+	position: absolute;
+	left: 19%;
+	bottom: -16px;
+}
+</style>
+<!----font-Awesome----->
+<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+<!----font-Awesome----->
+<div class="aboutus" id="aboutus">
+	<div class="container">
+		<div class="main_grid">
+			<div class="span_of_4"><!-- start span_of_4 -->
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-thumbs-o-up"></i></span>
+						<h3>寻找具有潜质的牛咖们</h3>
+					</div>
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-users"></i></span>
+						<h3>寻找最牛的创业团队</h3>	
+					</div>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-search"></i></span>
+						<h3>精准的匹配投资方向</h3>		
+					</div>
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<div class="span4_of_list">
+						<span><i class="fa fa-bell-o"></i></span>
+						<h3>强大的形象运营团队</h3>						
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div><!-- end span_of_4 -->
+		</div>
+	</div>
+</div>

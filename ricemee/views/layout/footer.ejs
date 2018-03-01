@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+		};
+		*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+	});
+</script>
+<div class="footer-section">
+	<div class="container">
+		<div class="footer-top wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">">
+			<div class="social-icons">
+					<a href="#"><i class="icon4"></i></a>
+					<a href="#"><i class="icon5"></i></a>
+					<a href="#"><i class="icon6"></i></a>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>Copyright &copy; 2016.Ricemee All rights reserved.</p>
+		</div>
+	<a class="scroll" href="#head" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+</div>
